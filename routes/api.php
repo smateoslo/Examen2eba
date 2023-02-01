@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/trips/destino/{destino}', function($destino){
+    $trips = DB::table('trips')
+        ->where('plazas', '<', 4)
+        ->where('destino', '=', $destino)
+        ->get();
+       return $trips; 
 });

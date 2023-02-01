@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'nombre' => "admin",
             'email' => "admin@zubirimanteo.com",
             'password' => bcrypt("password"),
+            'role' => 'admin'
         ]);
 
         $firstNames = ['Oliver', 'Mary', 'Harry', 'Jane', 'Noah', 'Emily',

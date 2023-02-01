@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use App\Http\AdministracionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,12 @@ Route::view('/', 'enunciado');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/administracion', [App\Http\Controllers\AdministracionController::class, 'listaConductores']);
 
+Route::get('admin', function(){
+    if(Gate::allows('admin')){
+        echo 'admin';
+    }else{
+        echo 'No eres administrador';
+    }
+});
